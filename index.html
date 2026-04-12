@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            background: #4facfe;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #007bff;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .attempts {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎯 Guess the Number</h1>
+    <p>Guess a number between 1 and 100</p>
+
+    <input type="number" id="guessInput" placeholder="Enter your guess">
+    <br>
+    <button onclick="checkGuess()">Guess</button>
+
+    <div class="message" id="message"></div>
+    <div class="attempts" id="attempts"></div>
+</div>
+
+<script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+        let userGuess = document.getElementById("guessInput").value;
+        let message = document.getElementById("message");
+        let attemptsDisplay = document.getElementById("attempts");
+
+        if (userGuess === "") {
+            message.textContent = "⚠️ Please enter a number!";
+            return;
+        }
+
+        attempts++;
+
+        if (userGuess == randomNumber) {
+            message.textContent = "🎉 Correct! You guessed it!";
+            attemptsDisplay.textContent = "Attempts: " + attempts;
+        } else if (userGuess < randomNumber) {
+            message.textContent = "📉 Too low! Try again.";
+            attemptsDisplay.textContent = "Attempts: " + attempts;
+        } else {
+            message.textContent = "📈 Too high! Try again.";
+            attemptsDisplay.textContent = "Attempts: " + attempts;
+        }
+    }
+</script>
+
+</body>
+</html>
