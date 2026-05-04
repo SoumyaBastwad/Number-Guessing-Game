@@ -89,5 +89,18 @@
         }
 
         attempts++;
-
+        if (userGuess == randomNumber) {
+            message.textContent = "🎉 Correct! You guessed it!";
+            attemptsDisplay.textContent = "Attempts: " + attempts;
+        } else if (userGuess < randomNumber) {
+            message.textContent = "📉 Too low! Try again.";
+            attemptsDisplay.textContent = "Attempts: " + attempts;
+        } else {
+            message.textContent = "📈 Too high! Try again.";
+            attemptsDisplay.textContent = "Attempts: " + attempts;
+        }
+    }
+</script>
+</body>
+</html>
        
